@@ -1,6 +1,6 @@
 <?php
 //Rota que vai na raiz do projeto
-Route::get('/', "UsersController@getUsers")->name("home");
+Route::get('/users', "UsersController@getUsers")->name("home");
 Route::get("/users/cadastrar", function(){
 	//definindo os links para as rotas home e cadastrar
 	$link_home = route("home");
@@ -11,3 +11,4 @@ Route::get("/users/cadastrar", function(){
    		]);
 })->name("cadastrar");
 Route::get('/users/show/{id}', "UsersController@getUserById");
+Route::post('/users/delete/{id}', "UsersController@delete")->name("delete");

@@ -2,9 +2,11 @@
 @section("title", "Lista de usuários")
 @section("tabela")
 <div class="container">
-	
+	@if(!empty($msg))
+		<div class="alert alert-success" style="margin-top: 15px"><strong>{{$msg}}</strong></div>
+	@endif
 	@if(count($users) == 0)
-	<div class="alert alert-danger" style="margin-top: 15px"><strong>Não há usuários cadastrados!</strong></div>
+		<div class="alert alert-danger" style="margin-top: 15px"><strong>Não há usuários cadastrados!</strong></div>
 	@else
 	<div class="card" style="margin-top: 15px">
 		<div class="card-header">

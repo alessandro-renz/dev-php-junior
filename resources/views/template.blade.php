@@ -23,6 +23,7 @@
   </div>
   @yield("tabela")
   @yield("formulario")
+  @yield("perfil")
 	<!-- não apagar!-->
 	<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 	
