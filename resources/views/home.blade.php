@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="card" style="margin-top: 15px">
 		<div class="card-header">
-			<a href="#" class="btn btn-primary">Adicionar Usuário</a>
+			<a href="{{$link_cadastro}}" class="btn btn-primary">Adicionar Usuário</a>
 		</div>
 		<div class="card-body">
 			<table class="table table-striped table-bordered">

@@ -14,14 +14,15 @@
               <button type="button" class="navbar-toggler" data-target="#menu" data-toggle="collapse"><span class="navbar-toggler-icon text-light"></span></button> 
               <div id="menu" class="collapse navbar-collapse">
                   <ul class="navbar-nav mr-auto text-light">
-                    <li class="nav-item"><a href="#" class="nav-link text-light font-weight-bold">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-light font-weight-bold">Cadastrar</a></li>
+                    <li class="nav-item"><a href="{{$link_home}}" class="nav-link text-light font-weight-bold">Home</a></li>
+                    <li class="nav-item"><a href="{{$link_cadastro}}" class="nav-link text-light font-weight-bold">Cadastrar</a></li>
                   </ul>
               </div>
           </nav>
       </header>
   </div>
   @yield("tabela")
+  @yield("formulario")
 	<!-- não apagar!-->
 	<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 	
