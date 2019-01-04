@@ -10,4 +10,4 @@ Route::get("/users/cadastrar", function(){
    			"link_cadastro"=>$link_cadastro
    		]);
 })->name("cadastrar");
-Route::get('/users/show/{id}', "UsersController@getUserById")->name("show");
+Route::get('/users/show/{id}', "UsersController@getUserById");

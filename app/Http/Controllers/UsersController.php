@@ -7,20 +7,25 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
-   public function getUsers()
-   {
-   		$link_home = route("home");
-   		$link_cadastro = route("cadastrar");
+	private $link_home;
+	private $link_cadastro;
+
+	public function getUsers()
+	{
+   		$this->link_home = route("home");
+   		$this->link_cadastro = route("cadastrar");
+   		$data = DB::table("usuarios")->get();
    		return view('home', [
-   			"link_home"=>$link_home,
-   			"link_cadastro"=>$link_cadastro
+   			"link_home"=>$this->link_home,
+   			"link_cadastro"=>$this->link_cadastro,
+   			"users"=>$data
    		]);
-   }
-   public function getUserById($id)
-   {
+	}
+	public function getUserById($id)
+	{
    		return view('show_user', [
-   			"link_home"=>$link_home,
-   			"link_cadastro"=>$link_cadastro
+   			"link_home"=>$this->link_home,
+   			"link_cadastro"=>$this->link_cadastro
    		]);
-   }
+   	}
 }
