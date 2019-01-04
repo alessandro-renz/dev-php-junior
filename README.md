@@ -1,65 +1,69 @@
-# Teste prático - Dev PHP Junior  
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-----------
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-## Introdução
-Este é um teste que aplicamos na seleção de novos desenvolvedores junior.  
-O teste consiste no desenvolvimento de um CRUD, simples assim!!
+## About Laravel
 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
 
-## Objetivos  
-- Conhecer um pouco de suas habilidades e sua maneira de trabalho.
-- Saber como trabalha com versionamento de código
-- Você deve utilizar o seguinte stack:
-	- HTML, CSS, JS	
-	- PHP
-	- Composer
-	- Algum framework (Laravel, CodeIgniter, Zend, Yii, CakePHP, Phalcon)
-	- Banco de Dados (Mysql)
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Requisitos
-- Cadastro de usuário
-	- Nome
-	- CPF
-	- Data Nascimento
-	- Email
-	- Tefone
-	- Endereço
-	- Cidade
-	- Estado
-- Ao cadastrar um novo usuário, quando selecionar o estado deverá aparecer as suas respectivas cidades no campo cidade 
-- Listar os usuários cadastrados
-	- Ao clicar em um usuário, redirecionar para uma tela com as informações do mesmo
-- Editar os dados do usuário
-- Deletar usuários a partir da tela de listagem ou de edição 
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
+## Learning Laravel
 
-## O que avaliamos
-- Qualidade de código  
-- Código limpo
-- Simplicidade
-- Lógica de programação
-- Conceitos de orientação a objetos
-- Otimização do código implementado
-- Organização e padrão de Commits
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
 
-### Observações
-- Nunca realizamos Commit no master!!
-- Sinta-se à vontade para resolver da forma que achar melhor
-- Temos preferência pelo uso do framework Laravel, mas você pode usar qual preferir ou dominar melhor.  
-	- Se você não sabe Laravel, não se preocupe, se for aprovado, lhe ensinaremos ;)
-- Não tenha medo de comentários, se achar necessário comentar alguma parte ou explicar algo, faça!!
-- Já falei que não comitamos no master?!
+If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
+## Laravel Sponsors
 
-## Considerações
-- Seja criativo  
-- Nos diga o que achou do teste
+We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
 
-## Entrega
->**Você deve criar um fork do repositório no seu GitHub e subir seu código lá,**   
-**assim que finalizar o projeto, nos envie o link por email**
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
 
-### Boa Sorte, que a força do Elephant esteja com você!! ;)
+## Contributing
 
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
