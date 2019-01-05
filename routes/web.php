@@ -1,5 +1,10 @@
 <?php
 //Rota que vai na raiz do projeto
+Route::get('/', function(){
+	$link = route("home");
+	return view("inicio", ["link"=>$link]);
+})->name("index");
+//Rota que entra na lista de usuarios
 Route::get('/users', "UsersController@getUsers")->name("home");
 Route::get("/users/cadastrar", function(){
 	//definindo os links para as rotas home e cadastrar

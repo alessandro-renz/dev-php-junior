@@ -26,9 +26,9 @@
 				<p>{{$user->estado}}</p>
 			</div>
 		</div>
-		
+
 		<div class="card-footer">
-			<a href="#" class="btn btn-secondary">Voltar</a>
+			<a href="{{$link_home}}" class="btn btn-secondary">Voltar</a>
 			<a href="#" class="btn btn-primary">Editar</a>
 			<a href="#" class="btn btn-danger">Deletar</a>
 		</div>
