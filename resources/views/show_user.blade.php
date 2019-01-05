@@ -2,7 +2,9 @@
 @section("title", "Perfil do usuário")
 @section("perfil")
 	@empty($user)
-	<div class="alert alert-danger" style="margin-top: 15px"><strong>Este usuário não existe!</strong></div>
+	<div class="container">
+		<div class="alert alert-danger" style="margin-top: 15px"><strong>Este usuário não existe!</strong></div>
+	</div>
 	@else
 	<div class="container">
 		<div class="card" style="margin-top: 15px">
@@ -30,7 +32,7 @@
 		<div class="card-footer">
 			<a href="{{$link_home}}" class="btn btn-secondary">Voltar</a>
 			<a href="#" class="btn btn-primary">Editar</a>
-			<a href="#" class="btn btn-danger">Deletar</a>
+			<a href="{{$link_delete}}" class="btn btn-danger">Deletar</a>
 		</div>
 	</div>
 	@endif

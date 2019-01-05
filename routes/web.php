@@ -7,13 +7,12 @@ Route::get('/', function(){
 //Rota que entra na lista de usuarios
 Route::get('/users', "UsersController@getUsers")->name("home");
 Route::get("/users/cadastrar", function(){
-	//definindo os links para as rotas home e cadastrar
-	$link_home = route("home");
-   	$link_cadastro = route("cadastrar");
+	
 	return view('cadastrar', [
-   			"link_home"=>$link_home,
-   			"link_cadastro"=>$link_cadastro
+			"link_exit"=>route("index"),
+   			"link_home"=>route("home"),
+   			"link_cadastro"=>route("cadastrar")
    		]);
 })->name("cadastrar");
-Route::get('/users/show/{id}', "UsersController@getUserById");
-Route::post('/users/delete/{id}', "UsersController@delete")->name("delete");
+Route::get('/users/{id}/show', "UsersController@getUserById")->where("id","[0-9]{1,}");
+Route::get('/users/{id}/{nome}/delete', "UsersController@delete")->where("id","[0-9]{1,}");

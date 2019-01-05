@@ -2,9 +2,6 @@
 @section("title", "Lista de usuários")
 @section("tabela")
 <div class="container">
-	@if(!empty($msg))
-		<div class="alert alert-success" style="margin-top: 15px"><strong>{{$msg}}</strong></div>
-	@endif
 	@if(count($users) == 0)
 		<div class="alert alert-danger" style="margin-top: 15px"><strong>Não há usuários cadastrados!</strong></div>
 	@else
@@ -29,7 +26,7 @@
 						<td>{{$u->CPF}}</td>
 						<td>{{$u->email}}</td>
 						<td>
-							<a href="users/show/{{$u->id}}" class="text-link">Ver mais</a>
+							<a href="users/{{$u->id}}/show" class="text-link">Ver mais</a>
 						</td>
 					</tr>
 					@endforeach

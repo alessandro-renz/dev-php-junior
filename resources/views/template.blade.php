@@ -16,6 +16,7 @@
                   <ul class="navbar-nav mr-auto text-light">
                     <li class="nav-item"><a href="{{$link_home}}" class="nav-link text-light font-weight-bold">Home</a></li>
                     <li class="nav-item"><a href="{{$link_cadastro}}" class="nav-link text-light font-weight-bold">Cadastrar</a></li>
+                    <li class="nav-item"><a href="{{$link_exit}}" class="nav-link text-light font-weight-bold d-block" style="position:absolute;right:20px;">Sair</a></li>
                   </ul>
               </div>
           </nav>
