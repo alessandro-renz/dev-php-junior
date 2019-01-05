@@ -15,11 +15,11 @@ class UsersController extends Controller
          $data = Usuario::all();
          //links de direcionamento
          $this->link_home = route("home");
-   		$this->link_cadastro = route("cadastrar");
+   		   $this->link_cadastro = route("cadastrar");
          $this->link_exit = route("index");
    		
    		return view('home', [
-            "link_exit"=>route("index"),
+        "link_exit"=>route("index"),
    			"link_home"=>route("home"),
    			"link_cadastro"=>route("cadastrar"),
    			"users"=>$data
@@ -36,6 +36,7 @@ class UsersController extends Controller
    		
    		return view('show_user', [
             "link_delete"=>"/dev-php-junior/public/users/$user->id/$user->nome/delete",
+            "link_edit"=>"/dev-php-junior/public/users/$user->id/edit",
             "link_exit"=>route("index"),
    			"link_home"=>route("home"),
    			"link_cadastro"=>route("cadastrar"),
@@ -56,5 +57,31 @@ class UsersController extends Controller
            } 
          }
 
+      }
+      public function update($id){
+        if(empty($id) || !isset($id)){
+            return redirect()->route("home");
+            exit;
+         }else{
+           $user = Usuario::find($id);
+           if(!empty($user)){
+               return view('user_edit', [
+                  "nome"=>$user->nome,
+                  "cpf"=>$user->CPF,
+                  "data"=>$user->data_nascimento,
+                  "email"=>$user->email,
+                  "telefone"=>$user->telefone,
+                  "endereco"=>$user->endereco,
+                  "cidade"=>$user->cidade,
+                  "estado"=>$user->estado,
+                  "cep"=>$user->cep,
+                  "link_exit"=>route("index"),
+                  "link_home"=>route("home"),
+                  "link_cadastro"=>route("cadastrar")
+               ]);
+           }else{
+               return redirect()->route("home");
+           }
+         }
       }
 }

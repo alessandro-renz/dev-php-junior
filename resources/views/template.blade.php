@@ -25,6 +25,7 @@
   @yield("tabela")
   @yield("formulario")
   @yield("perfil")
+  @yield("formulario_edicao")
 	<!-- não apagar!-->
 	<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 	

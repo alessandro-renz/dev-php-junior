@@ -20,6 +20,8 @@
 				<p>{{$user->email}}</p>
 				<h4><strong>Telefone:</strong></h4>
 				<p>{{$user->telefone}}</p>
+				<h4><strong>CEP:</strong></h4>
+				<p>{{$user->CEP}}</p>
 				<h4><strong>Endereço:</strong></h4>
 				<p>{{$user->endereco}}</p>
 				<h4><strong>Cidade:</strong></h4>
@@ -31,7 +33,7 @@
 
 		<div class="card-footer">
 			<a href="{{$link_home}}" class="btn btn-secondary">Voltar</a>
-			<a href="#" class="btn btn-primary">Editar</a>
+			<a href="{{$link_edit}}" class="btn btn-primary">Editar</a>
 			<a href="{{$link_delete}}" class="btn btn-danger">Deletar</a>
 		</div>
 	</div>

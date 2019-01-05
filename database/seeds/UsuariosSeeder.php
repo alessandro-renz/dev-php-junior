@@ -20,7 +20,8 @@ class UsuariosSeeder extends Seeder
         	"telefone"=>"5491520765",
         	"endereco"=>"Rua xxx, 987",
         	"cidade"=>"Passo fundo",
-        	"estado"=>"RS"
+        	"estado"=>"RS",
+            "CEP"=>"99150000"
 
         ]);
         DB::table("usuarios")->insert([
@@ -31,7 +32,8 @@ class UsuariosSeeder extends Seeder
             "telefone"=>"5491520765",
             "endereco"=>"Rua xxx, 987",
             "cidade"=>"São Paulo",
-            "estado"=>"SP"
+            "estado"=>"SP",
+            "CEP"=>"99150000"
 
         ]);
         DB::table("usuarios")->insert([
@@ -42,7 +44,8 @@ class UsuariosSeeder extends Seeder
             "telefone"=>"5491520765",
             "endereco"=>"Rua xxx, 987",
             "cidade"=>"Erechim",
-            "estado"=>"RS"
+            "estado"=>"RS",
+            "CEP"=>"99150000"
 
         ]);
         DB::table("usuarios")->insert([
@@ -53,7 +56,8 @@ class UsuariosSeeder extends Seeder
             "telefone"=>"5491520765",
             "endereco"=>"Rua xxx, 987",
             "cidade"=>"Novo Hamburgo",
-            "estado"=>"RS"
+            "estado"=>"RS",
+            "CEP"=>"99150000"
 
         ]);
     }
