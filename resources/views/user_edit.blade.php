@@ -51,7 +51,7 @@
                 <div class="form-group">
                   <label for="#cep">CEP:</label>
                   <input type="text" maxlength="8" value="{{$cep}}" name="cep" id="cep" class="form-control">
-                  <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="text-link text-primary" target="_blank">Não sei meu cep</a>
+                  
                 </div>
               </div>
             </div> 

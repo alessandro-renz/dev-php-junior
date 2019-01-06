@@ -17,3 +17,4 @@ Route::get("/users/cadastrar", function(){
 Route::get('/users/{id}/show', "UsersController@getUserById")->where("id","[0-9]{1,}");
 Route::get('/users/{id}/{nome}/delete', "UsersController@delete")->where("id","[0-9]{1,}");
 Route::get('/users/{id}/edit', "UsersController@update")->where("id","[0-9]{1,}");
+Route::post('/users/getCEP', "UsersController@getCEP");

@@ -50,7 +50,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="#cep">CEP:</label>
-                  <input type="text" maxlength="8" name="cep" id="cep" class="form-control">
+                  <input type="text" id="cep" maxlength="8" name="cep" id="cep" class="form-control" placeholder="Ex.: 99150000">
                   <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="text-link text-primary" target="_blank">Não sei meu cep</a>
                 </div>
               </div>
@@ -67,13 +67,13 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="#cidade">Cidade:</label>
-                  <input type="text" disabled name="cidade" id="cidade" class="form-control">
+                  <input type="text" disabled id="cidade" name="cidade" id="cidade" class="form-control">
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="#estado">Estado:</label>
-                  <input type="text" disabled name="estado" id="estado" class="form-control">
+                  <input type="text" disabled id="estado" name="estado" id="estado" class="form-control">
                 </div>
               </div>
             </div>
@@ -87,4 +87,40 @@
         </div>
     </div>
 </div>
+@endsection
+@section("ajax")
+<script type="text/javascript">
+    $("#cep").bind("focus",  function(){
+        $(this).bind("keyup", function(){
+          var cep = $("#cep").val();
+          $("#cidade").attr("placeholder","Carregando...");
+          $("#estado").attr("placeholder","Carregando...");
+
+          if(cep.length == 8){
+              $.ajax({
+                url:"/dev-php-junior/public/users/getCEP",
+                type:"POST",
+                dataType:"json",
+                data:{cep:cep},
+                success:function(json){
+                  if(json.erro == true){
+                    $("#cidade").css("border", "1px solid red");
+                    $("#estado").css("border", "1px solid red");
+                    $("#cep").css("border", "1px solid red");
+                    $("#cidade").attr("placeholder","Este cep não existe!");
+                    $("#estado").attr("placeholder","Este cep não existe!");
+                  }else{
+                    $("#cidade").val(json.localidade);
+                    $("#estado").val(json.uf);
+                    $("#cidade").css("border", "1px solid green");
+                    $("#estado").css("border", "1px solid green");
+                    $("#cep").css("border", "1px solid green");
+                  }
+                  
+                }
+              });
+          }
+        });
+    });
+</script>
 @endsection

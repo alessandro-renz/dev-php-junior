@@ -74,7 +74,7 @@ class UsersController extends Controller
                   "endereco"=>$user->endereco,
                   "cidade"=>$user->cidade,
                   "estado"=>$user->estado,
-                  "cep"=>$user->cep,
+                  "cep"=>$user->CEP,
                   "link_exit"=>route("index"),
                   "link_home"=>route("home"),
                   "link_cadastro"=>route("cadastrar")
@@ -83,5 +83,21 @@ class UsersController extends Controller
                return redirect()->route("home");
            }
          }
+      }
+      public function getCEP(Request $r){
+          $cep = $r->input("cep");
+          if(isset($cep)){
+            $url = 'viacep.com.br/ws/'.$cep.'/json/'; 
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            return $response; 
+          }else{
+            return redirect()->route("home");
+          } 
       }
 }
