@@ -1,7 +1,7 @@
 @extends("template")
 @section("title", "Area de Cadastro")
 
-@section("formulario")
+@section("formulario_criacao")
 <!-- Formulario !-->
 <div class="container">
     <div class="card" style="margin-top: 15px">
@@ -9,7 +9,7 @@
           Area de Cadastro
         </div>
         <div class="card-body">
-          <form method="POST">
+          <form action="{{$link_create}}" method="POST">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -44,7 +44,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="#telefone">Telefone:</label>
-                  <input type="text" name="telefone" id="telefone" class="form-control">
+                  <input type="text" maxlength="11" name="telefone" id="telefone" class="form-control">
                 </div>
               </div>
               <div class="col-6">
@@ -67,13 +67,13 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="#cidade">Cidade:</label>
-                  <input type="text" disabled id="cidade" name="cidade" id="cidade" class="form-control">
+                  <input type="text" id="cidade" name="cidade" id="cidade" class="form-control bg-dark text-light">
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="#estado">Estado:</label>
-                  <input type="text" disabled id="estado" name="estado" id="estado" class="form-control">
+                  <input type="text" id="estado" name="estado" id="estado" class="form-control bg-dark text-light">
                 </div>
               </div>
             </div>
@@ -104,17 +104,17 @@
                 data:{cep:cep},
                 success:function(json){
                   if(json.erro == true){
-                    $("#cidade").css("border", "1px solid red");
-                    $("#estado").css("border", "1px solid red");
-                    $("#cep").css("border", "1px solid red");
+                    $("#cidade").css("border", "3px solid red");
+                    $("#estado").css("border", "3px solid red");
+                    $("#cep").css("border", "3px solid red");
                     $("#cidade").attr("placeholder","Este cep não existe!");
                     $("#estado").attr("placeholder","Este cep não existe!");
                   }else{
                     $("#cidade").val(json.localidade);
                     $("#estado").val(json.uf);
-                    $("#cidade").css("border", "1px solid green");
-                    $("#estado").css("border", "1px solid green");
-                    $("#cep").css("border", "1px solid green");
+                    $("#cidade").css("border", "3px solid green");
+                    $("#estado").css("border", "3px solid green");
+                    $("#cep").css("border", "3px solid green");
                   }
                   
                 }

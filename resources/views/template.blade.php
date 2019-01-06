@@ -23,7 +23,7 @@
       </header>
   </div>
   @yield("tabela")
-  @yield("formulario")
+  @yield("formulario_criacao")
   @yield("perfil")
   @yield("formulario_edicao")
 	<!-- não apagar!-->

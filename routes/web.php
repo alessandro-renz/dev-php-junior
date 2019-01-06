@@ -11,10 +11,13 @@ Route::get("/users/cadastrar", function(){
 	return view('cadastrar', [
 			"link_exit"=>route("index"),
    			"link_home"=>route("home"),
-   			"link_cadastro"=>route("cadastrar")
+   			"link_cadastro"=>route("cadastrar"),
+   			"link_create"=>route("create")
    		]);
 })->name("cadastrar");
 Route::get('/users/{id}/show', "UsersController@getUserById")->where("id","[0-9]{1,}");
 Route::get('/users/{id}/{nome}/delete', "UsersController@delete")->where("id","[0-9]{1,}");
-Route::get('/users/{id}/edit', "UsersController@update")->where("id","[0-9]{1,}");
+Route::get('/users/{id}/edit', "UsersController@edit")->where("id","[0-9]{1,}");
 Route::post('/users/getCEP', "UsersController@getCEP");
+Route::post('/users/{id}/update', "UsersController@update")->where("id","[0-9]{1,}");
+Route::post('/users/create', "UsersController@create")->name("create");

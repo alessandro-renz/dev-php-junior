@@ -1,6 +1,7 @@
 @extends("template")
 @section("title", "Perfil do usuário")
 @section("perfil")
+	
 	@empty($user)
 	<div class="container">
 		<div class="alert alert-danger" style="margin-top: 15px"><strong>Este usuário não existe!</strong></div>
@@ -13,15 +14,15 @@
 				<h4><strong>Nome:</strong></h4>
 				<p>{{$user->nome}}</p>
 				<h4><strong>CPF:</strong></h4>
-				<p>{{$user->CPF}}</p>
+				<p>{{$cpf}}</p>
 				<h4><strong>Data Nascimento:</strong></h4>
-				<p>{{$user->data_nascimento}}</p>
+				<p>{{$date}}</p>
 				<h4><strong>Email:</strong></h4>
 				<p>{{$user->email}}</p>
 				<h4><strong>Telefone:</strong></h4>
-				<p>{{$user->telefone}}</p>
+				<p>{{$telefone}}</p>
 				<h4><strong>CEP:</strong></h4>
-				<p>{{$user->CEP}}</p>
+				<p>{{$cep}}</p>
 				<h4><strong>Endereço:</strong></h4>
 				<p>{{$user->endereco}}</p>
 				<h4><strong>Cidade:</strong></h4>

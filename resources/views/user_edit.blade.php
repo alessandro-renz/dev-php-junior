@@ -4,12 +4,13 @@
 @section("formulario_edicao")
 <!-- Formulario !-->
 <div class="container">
+    
     <div class="card" style="margin-top: 15px">
         <div class="card-header">
           Editar Usuario
         </div>
         <div class="card-body">
-          <form method="POST">
+          <form action="/dev-php-junior/public/users/{{$id_user}}/update" method="POST">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -44,7 +45,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="#telefone">Telefone:</label>
-                  <input type="text" name="telefone" value="{{$telefone}}" id="telefone" class="form-control">
+                  <input type="text" maxlength="11" name="telefone" value="{{$telefone}}" id="telefone" class="form-control">
                 </div>
               </div>
               <div class="col-6">
@@ -88,3 +89,5 @@
     </div>
 </div>
 @endsection
+
+
