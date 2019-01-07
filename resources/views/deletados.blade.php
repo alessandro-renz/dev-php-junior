@@ -2,9 +2,16 @@
 @section("title", "Lista de deletados")
 @section("tabela_deletados")
 <div class="container">
-	@if(count($deletes) == 0)
-		<div class="alert alert-danger" style="margin-top: 15px"><strong>Não há usuários deletados!</strong></div>
-	@else
+	@if(!empty($msg_delete) && $msg_delete == true)
+      @component("components.alert",["type"=>"success"])
+          Usuário deletado do banco de dados com sucesso! 
+      @endcomponent
+    @elseif(!empty($restore) && $restore == true)
+      @component("components.alert",["type"=>"success"])
+          Usuario restaurado com sucesso, <a href="/users" class="alert-link">clique aqui para ver a lista.</a>  
+      @endcomponent
+	@endif
+	@if(count($deletes) > 0)
 	<div class="card" style="margin-top: 15px">
 		<div class="card-body">
 			<table class="table table-striped table-bordered">
@@ -32,6 +39,10 @@
 			</table>
 		</div>
 	</div>
-	@endif
+	@else
+      @component("components.alert",["type"=>"warning"])
+          Não há usuários deletados!
+      @endcomponent
+    @endif
 </div>
 @endsection
