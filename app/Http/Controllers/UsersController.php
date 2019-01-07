@@ -11,15 +11,13 @@ class UsersController extends Controller
 	public function getUsers()
 	{
    		$data = array();
-         //pegando todos os usuarios da tabela usuarios
-         $data = Usuario::all();
-         //links de direcionamento
-         $this->link_home = route("home");
-   		   $this->link_cadastro = route("cadastrar");
-         $this->link_exit = route("index");
+      //pegando todos os usuarios da tabela usuarios
+      $data = Usuario::all();
+         
    		
    		return view('home', [
         "link_exit"=>route("index"),
+        "link_lixeira"=>route("trash"),
    			"link_home"=>route("home"),
    			"link_cadastro"=>route("cadastrar"),
    			"users"=>$data
@@ -64,6 +62,7 @@ class UsersController extends Controller
             "link_exit"=>route("index"),
             "link_home"=>route("home"),
             "link_cadastro"=>route("cadastrar"),
+            "link_lixeira"=>route("trash"),
             "user"=>$user,
             "date"=>$date,
             "telefone"=>$telefone,
@@ -107,7 +106,8 @@ class UsersController extends Controller
                   "cep"=>$user->CEP,
                   "link_exit"=>route("index"),
                   "link_home"=>route("home"),
-                  "link_cadastro"=>route("cadastrar")
+                  "link_cadastro"=>route("cadastrar"),
+                  "link_lixeira"=>route("trash")
                ]);
            }else{
                return redirect()->route("home");
@@ -171,5 +171,45 @@ class UsersController extends Controller
           $user->CEP = $r->input("cep");
           $user->save();
           return redirect()->route("home");
+      }
+      public function getTrash()
+      {
+          $data = array();
+          //pegando todos os usuarios deletados
+          $data = Usuario::onlyTrashed()->get();
+          //links de direcionamento
+          
+          return view('deletados', [
+            "link_lixeira"=>route("trash"),
+            "link_exit"=>route("index"),
+            "link_home"=>route("home"),
+            "link_cadastro"=>route("cadastrar"),
+            "deletes"=>$data
+          ]);
+      }
+      public function restaurar($id)
+      {
+          $user = array();
+          //pegar um usuario deletado, pelo id
+          $user = Usuario::withTrashed()->find($id);
+          if(!empty($user)){
+            $user->restore();
+          }else{
+            return redirect()->route("home");
+          }
+          return redirect()->route("trash");
+          
+      }
+      public function forceDelete($id)
+      {
+          $user = array();
+          //pegar um usuario deletado, pelo id
+          $user = Usuario::withTrashed()->find($id);
+          if(!empty($user)){
+            $user->forceDelete();
+          }else{
+            return redirect()->route("home");
+          }
+          return redirect()->route("trash");
       }
 }

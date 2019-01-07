@@ -23,6 +23,7 @@ class CriarTabelaUsuarios extends Migration
             $table->string("endereco", 200);
             $table->string("cidade", 100);
             $table->string("estado", 100);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
