@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<!-- puxando o title da pagina filho !-->
 	<title>@yield("title")</title>
+  <meta name="csrf-token" content="{{csrf_token()}}">
 	<link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>

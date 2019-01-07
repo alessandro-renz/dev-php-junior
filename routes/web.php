@@ -14,7 +14,7 @@ Route::get("/users/cadastrar", function(){
    			"link_home"=>route("home"),
    			"link_cadastro"=>route("cadastrar"),
    			"link_create"=>route("create")
-   		]);
+   	]);
 })->name("cadastrar");
 Route::get('/users/{id}/show', "UsersController@getUserById")->where("id","[0-9]{1,}");
 Route::get('/users/{id}/{nome}/delete', "UsersController@delete")->where("id","[0-9]{1,}");

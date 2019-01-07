@@ -4,6 +4,15 @@
 @section("formulario_criacao")
 <!-- Formulario !-->
 <div class="container">
+  @if(!empty($error) && $error == true)
+    @component("components.alert",["type"=>"danger"])
+        Há campo(s) vazio(s)!
+    @endcomponent
+  @elseif(!empty($success) && $success == true)
+    @component("components.alert",["type"=>"success"])
+        Usuario cadastrado com sucesso, <a href="/users" class="alert-link">clique aqui para ver a lista.</a>  
+    @endcomponent  
+  @endif
     <div class="card" style="margin-top: 15px">
         <div class="card-header">
           Area de Cadastro
@@ -98,7 +107,7 @@
 
           if(cep.length == 8){
               $.ajax({
-                url:"/dev-php-junior/public/users/getCEP",
+                url:"/users/getCEP",
                 type:"POST",
                 dataType:"json",
                 data:{cep:cep},

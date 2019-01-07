@@ -23,8 +23,8 @@
 						<td>{{$d->CPF}}</td>
 						<td>{{$d->email}}</td>
 						<td>
-							<a href="/dev-php-junior/public/users/{{$d->id}}/force_delete" class="btn btn-danger">Deletar do BD</a>
-							<a href="/dev-php-junior/public/users/{{$d->id}}/restaurar" class="btn btn-primary">Restaurar</a>
+							<a href="/users/{{$d->id}}/force_delete" class="btn btn-danger">Deletar do BD</a>
+							<a href="/users/{{$d->id}}/restaurar" class="btn btn-primary">Restaurar</a>
 						</td>
 					</tr>
 					@endforeach

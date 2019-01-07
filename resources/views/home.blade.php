@@ -26,7 +26,7 @@
 						<td>{{$u->CPF}}</td>
 						<td>{{$u->email}}</td>
 						<td>
-							<a href="users/{{$u->id}}/show" class="text-link">Ver mais</a>
+							<a href="/users/{{$u->id}}/show" class="text-link">Ver mais</a>
 						</td>
 					</tr>
 					@endforeach

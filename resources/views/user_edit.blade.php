@@ -4,13 +4,21 @@
 @section("formulario_edicao")
 <!-- Formulario !-->
 <div class="container">
-    
+    @if(!empty($error) && $error == true)
+      @component("components.alert",["type"=>"danger"])
+          Há campo(s) vazio(s)!
+      @endcomponent
+    @elseif(!empty($success) && $success == true)
+      @component("components.alert",["type"=>"success"])
+          Usuario editado com sucesso, <a href="/users" class="alert-link">clique aqui para ver a lista.</a>  
+      @endcomponent  
+    @endif
     <div class="card" style="margin-top: 15px">
         <div class="card-header">
           Editar Usuario
         </div>
         <div class="card-body">
-          <form action="/dev-php-junior/public/users/{{$id_user}}/update" method="POST">
+          <form action="/users/{{$id_user}}/update" method="POST">
             <div class="row">
               <div class="col-12">
                 <div class="form-group">

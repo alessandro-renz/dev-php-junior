@@ -26,12 +26,11 @@ class UsersController extends Controller
 	public function getUserById($id)
 	{
    		$user = array();
-   		if(!isset($id)){
+      $user = Usuario::where("id", $id)->first();
+   		if(!isset($user)){
    			return redirect()->route("home");
    			exit;
-   		}
-   		$user = Usuario::where("id", $id)->first();
-   		if(!empty($user)){
+   		}else{
           /*
           *Foi feito alguns ajustes nos dados vindos do banco de dados
           *para que fiquem em formato adequado de visualização.Ex.:
@@ -57,8 +56,8 @@ class UsersController extends Controller
           $cep = $new_cep[0]."-".$new_cep[1];
 
           return view('show_user', [
-            "link_delete"=>"/dev-php-junior/public/users/$user->id/$user->nome/delete",
-            "link_edit"=>"/dev-php-junior/public/users/$user->id/edit",
+            "link_delete"=>"/users/$user->id/$user->nome/delete",
+            "link_edit"=>"/users/$user->id/edit",
             "link_exit"=>route("index"),
             "link_home"=>route("home"),
             "link_cadastro"=>route("cadastrar"),
@@ -70,30 +69,31 @@ class UsersController extends Controller
             "cep"=>$cep
           ]);
       }
+      
    	}
    	public function delete($id, $nome)
    	{
-   		if(empty($id) || !isset($id)){
+   		$user = Usuario::find($id);
+      if(!isset($user)){
             return redirect()->route("home");
             exit;
          }else{
-           $user = Usuario::find($id);
-           if($user->id == $id && $user->nome == $nome){
+            if($user->id == $id && $user->nome == $nome){
                $user->delete();
                return redirect()->route("home");
                exit;
-           } 
+            } 
          }
 
       }
       public function edit($id){
-        if(empty($id) || !isset($id)){
+        $user = Usuario::find($id);
+
+        if(!isset($user)){
             return redirect()->route("home");
             exit;
-         }else{
-           $user = Usuario::find($id);
-           if(!empty($user)){
-               return view('user_edit', [
+          }else{
+              return view('user_edit', [
                   "id_user"=>$user->id,
                   "nome"=>$user->nome,
                   "cpf"=>$user->CPF,
@@ -108,11 +108,9 @@ class UsersController extends Controller
                   "link_home"=>route("home"),
                   "link_cadastro"=>route("cadastrar"),
                   "link_lixeira"=>route("trash")
-               ]);
-           }else{
-               return redirect()->route("home");
-           }
-         }
+              ]);
+           
+          }
       }
       public function getCEP(Request $r){
           $cep = $r->input("cep");
@@ -132,45 +130,95 @@ class UsersController extends Controller
       }
       public function update(Request $r, $id)
       {
-              if(isset($id)){
-                
-                //puxando os dados do usuario pelo id no banco de dados
-                $user = Usuario::find($id);
-                if(!empty($user)){
+          $user = Usuario::find($id);
+          if(empty($user)){
+              return redirect()->route("home");
+              exit;
+          }
+          if(!empty($r->input("nome")) && !empty($r->input("cpf")) && !empty($r->input("data")) && !empty($r->input("email")) && !empty($r->input("telefone")) && !empty($r->input("endereco")) && !empty($r->input("cidade")) && !empty($r->input("estado")) && !empty($r->input("cep"))){
+            
+              $user->nome = $r->input("nome");
+              $user->CPF = $r->input("cpf");
+              $user->data_nascimento = $r->input("data");
+              $user->email = $r->input("email");
+              $user->telefone = $r->input("telefone");
+              $user->endereco = $r->input("endereco");
+              $user->cidade = $r->input("cidade");
+              $user->estado = $r->input("estado");
+              $user->CEP = $r->input("cep");
+              $user->save();
 
-                  $user->nome = $r->input("nome");
-                  $user->CPF = $r->input("cpf");
-                  $user->data_nascimento = $r->input("data");
-                  $user->email = $r->input("email");
-                  $user->telefone = $r->input("telefone");
-                  $user->endereco = $r->input("endereco");
-                  $user->cidade = $r->input("cidade");
-                  $user->estado = $r->input("estado");
-                  $user->CEP = $r->input("cep");
-                  $user->save();
-                  return redirect("/users/$user->id/show");
-                }else{
-                  return redirect()->route("home");
-                }
-              }else{
-                return redirect()->route("home");
-              }
+              return view('user_edit', [
+                    "success"=>true,
+                    "id_user"=>$user->id,
+                    "nome"=>$user->nome,
+                    "cpf"=>$user->CPF,
+                    "data"=>$user->data_nascimento,
+                    "email"=>$user->email,
+                    "telefone"=>$user->telefone,
+                    "endereco"=>$user->endereco,
+                    "cidade"=>$user->cidade,
+                    "estado"=>$user->estado,
+                    "cep"=>$user->CEP,
+                    "link_exit"=>route("index"),
+                    "link_home"=>route("home"),
+                    "link_cadastro"=>route("cadastrar"),
+                    "link_lixeira"=>route("trash")
+              ]);
+          }else{
+            return view('user_edit', [
+                  "error"=>true,
+                  "id_user"=>$user->id,
+                  "nome"=>$user->nome,
+                  "cpf"=>$user->CPF,
+                  "data"=>$user->data_nascimento,
+                  "email"=>$user->email,
+                  "telefone"=>$user->telefone,
+                  "endereco"=>$user->endereco,
+                  "cidade"=>$user->cidade,
+                  "estado"=>$user->estado,
+                  "cep"=>$user->CEP,
+                  "link_exit"=>route("index"),
+                  "link_home"=>route("home"),
+                  "link_cadastro"=>route("cadastrar"),
+                  "link_lixeira"=>route("trash")
+            ]);
+          }
       }
 
       public function create(Request $r)
       {
-          $user = new Usuario();
-          $user->nome = $r->input("nome");
-          $user->CPF = $r->input("cpf");
-          $user->data_nascimento = $r->input("data");
-          $user->email = $r->input("email");
-          $user->telefone = $r->input("telefone");
-          $user->endereco = $r->input("endereco");
-          $user->cidade = $r->input("cidade");
-          $user->estado = $r->input("estado");
-          $user->CEP = $r->input("cep");
-          $user->save();
-          return redirect()->route("home");
+          if(!empty($r->input("nome")) && !empty($r->input("cpf")) && !empty($r->input("data")) && !empty($r->input("email")) && !empty($r->input("telefone")) && !empty($r->input("endereco")) && !empty($r->input("cidade")) && !empty($r->input("estado")) && !empty($r->input("cep"))){
+            $user = new Usuario();
+            $user->nome = $r->input("nome");
+            $user->CPF = $r->input("cpf");
+            $user->data_nascimento = $r->input("data");
+            $user->email = $r->input("email");
+            $user->telefone = $r->input("telefone");
+            $user->endereco = $r->input("endereco");
+            $user->cidade = $r->input("cidade");
+            $user->estado = $r->input("estado");
+            $user->CEP = $r->input("cep");
+            $user->save();
+
+            return view('cadastrar', [
+                  "success"=>true,
+                  "link_exit"=>route("index"),
+                  "link_lixeira"=>route("trash"),
+                  "link_home"=>route("home"),
+                  "link_cadastro"=>route("cadastrar"),
+                  "link_create"=>route("create")
+            ]);
+          }else{
+            return view('cadastrar', [
+                  "error"=>true,
+                  "link_exit"=>route("index"),
+                  "link_lixeira"=>route("trash"),
+                  "link_home"=>route("home"),
+                  "link_cadastro"=>route("cadastrar"),
+                  "link_create"=>route("create")
+            ]);
+          }
       }
       public function getTrash()
       {
