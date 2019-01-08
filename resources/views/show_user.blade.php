@@ -1,6 +1,6 @@
 @extends("template")
 @section("title", "Perfil do usuário")
-@section("perfil")
+@section("body")
 	
 	@empty($user)
 	<div class="container">

@@ -24,12 +24,8 @@
           </nav>
       </header>
   </div>
-  @yield("tabela")
-  @yield("tabela_deletados")
-  @yield("formulario_criacao")
-  @yield("perfil")
-  @yield("formulario_edicao")
-	<!-- não apagar!-->
+  @yield("body")
+  <!-- não apagar!-->
 	<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
   @yield("ajax")
 </body>

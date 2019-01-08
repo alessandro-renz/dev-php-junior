@@ -1,6 +1,6 @@
 @extends("template")
 @section("title", "Lista de usuários")
-@section("tabela")
+@section("body")
 <div class="container">
 	@if(count($users) == 0)
 		<div class="alert alert-danger" style="margin-top: 15px"><strong>Não há usuários cadastrados!</strong></div>

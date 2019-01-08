@@ -130,13 +130,34 @@ class UsersController extends Controller
       }
       public function update(Request $r, $id)
       {
-          $user = Usuario::find($id);
-          if(empty($user)){
-              return redirect()->route("home");
-              exit;
-          }
-          if(!empty($r->input("nome")) && !empty($r->input("cpf")) && !empty($r->input("data")) && !empty($r->input("email")) && !empty($r->input("telefone")) && !empty($r->input("endereco")) && !empty($r->input("cidade")) && !empty($r->input("estado")) && !empty($r->input("cep"))){
-            
+              $user = Usuario::find($id);
+              if(empty($user)){
+                  return redirect()->route("home");
+                  exit;
+              }
+              //criando mensagens de erros para o usuario
+              $mensages= array(
+                "required"=>"O campo deve estar preenchido!",
+                "cpf.min"=>"O CPF deve ter 11 números",
+                "email.email"=>"Insira um email válido",
+                "telefone.min"=>"O telefone deve conter 11 numeros, DDD + código",
+                "cep.min"=>"O CEP deve ter 8 números"
+              );
+
+              //validando os dados antes de inserir na tabela usuarios
+              $r->validate([
+                "nome"=>"required",
+                "cpf"=>"required|min:11",
+                "data"=>"required",
+                "email"=>"required|email",
+                "telefone"=>"required|min:11",
+                "endereco"=>"required",
+                "cidade"=>"required",
+                "estado"=>"required",
+                "cep"=>"required|min:8"
+              ], $mensages);
+
+              //inserindo novos dados na tabela usuarios
               $user->nome = $r->input("nome");
               $user->CPF = $r->input("cpf");
               $user->data_nascimento = $r->input("data");
@@ -165,30 +186,34 @@ class UsersController extends Controller
                     "link_cadastro"=>route("cadastrar"),
                     "link_lixeira"=>route("trash")
               ]);
-          }else{
-            return view('user_edit', [
-                  "error"=>true,
-                  "id_user"=>$user->id,
-                  "nome"=>$user->nome,
-                  "cpf"=>$user->CPF,
-                  "data"=>$user->data_nascimento,
-                  "email"=>$user->email,
-                  "telefone"=>$user->telefone,
-                  "endereco"=>$user->endereco,
-                  "cidade"=>$user->cidade,
-                  "estado"=>$user->estado,
-                  "cep"=>$user->CEP,
-                  "link_exit"=>route("index"),
-                  "link_home"=>route("home"),
-                  "link_cadastro"=>route("cadastrar"),
-                  "link_lixeira"=>route("trash")
-            ]);
-          }
+          
       }
 
       public function create(Request $r)
       {
-          if(!empty($r->input("nome")) && !empty($r->input("cpf")) && !empty($r->input("data")) && !empty($r->input("email")) && !empty($r->input("telefone")) && !empty($r->input("endereco")) && !empty($r->input("cidade")) && !empty($r->input("estado")) && !empty($r->input("cep"))){
+            //criando mensagens de erros para o usuario
+            $mensages= array(
+              "required"=>"O campo deve estar preenchido!",
+              "cpf.min"=>"O CPF deve ter 11 números",
+              "email.email"=>"Insira um email válido",
+              "telefone.min"=>"O telefone deve conter 11 numeros, DDD + código",
+              "cep.min"=>"O CEP deve ter 8 números"
+            );
+
+            //validando os dados antes de inserir na tabela usuarios
+            $r->validate([
+              "nome"=>"required",
+              "cpf"=>"required|min:11",
+              "data"=>"required",
+              "email"=>"required|email",
+              "telefone"=>"required|min:11",
+              "endereco"=>"required",
+              "cidade"=>"required",
+              "estado"=>"required",
+              "cep"=>"required|min:8"
+            ], $mensages);
+
+            //inserindo novos dados na tabela usuarios
             $user = new Usuario();
             $user->nome = $r->input("nome");
             $user->CPF = $r->input("cpf");
@@ -209,16 +234,7 @@ class UsersController extends Controller
                   "link_cadastro"=>route("cadastrar"),
                   "link_create"=>route("create")
             ]);
-          }else{
-            return view('cadastrar', [
-                  "error"=>true,
-                  "link_exit"=>route("index"),
-                  "link_lixeira"=>route("trash"),
-                  "link_home"=>route("home"),
-                  "link_cadastro"=>route("cadastrar"),
-                  "link_create"=>route("create")
-            ]);
-          }
+          
       }
       public function getTrash()
       {

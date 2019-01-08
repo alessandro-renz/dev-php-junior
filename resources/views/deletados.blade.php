@@ -1,6 +1,6 @@
 @extends("template")
 @section("title", "Lista de deletados")
-@section("tabela_deletados")
+@section("body")
 <div class="container">
 	@if(!empty($msg_delete) && $msg_delete == true)
       @component("components.alert",["type"=>"success"])
