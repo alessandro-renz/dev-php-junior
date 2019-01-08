@@ -34,8 +34,8 @@ class UsersController extends Controller
           /*
           *Foi feito alguns ajustes nos dados vindos do banco de dados
           *para que fiquem em formato adequado de visualização.Ex.:
-          *CEP - 99999-000
-          *celular - (54) 991420685 
+          *CEP= 99999-000
+          *celular= (54)991420685 
           */
           $getdate = $user->data_nascimento;
           $date = explode("-", $getdate);
